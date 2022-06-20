@@ -20,8 +20,7 @@ jobs:
       matrix: ${{ steps.matrix.outputs.value }}
     steps:
       - id: matrix
-        run: |
-          echo '::set-output name=value::[\"a\", \"b\", \"c\"]'
+        run: echo '::set-output name=value::[\"a\", \"b\", \"c\"]'
   build:
     needs: [ setup ]
     runs-on: ubuntu-latest
