@@ -8,9 +8,6 @@ on:
     types:
      - deploy-command
 
-  # Allows you to run this workflow manually from the Actions tab
-  workflow_dispatch:
-
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
 
@@ -20,7 +17,7 @@ jobs:
       matrix: ${{ steps.matrix.outputs.value }}
     steps:
       - id: matrix
-        run: echo '::set-output name=value::["a", "b", "c"]'
+        run: echo '::set-output name=value::${{ github.event.client_payload.slash_command.environment }}'
   build:
     needs: [ setup ]
     runs-on: ubuntu-latest
